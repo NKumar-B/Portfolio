@@ -591,9 +591,37 @@ const Chatbot = () => {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(false); // Track if loading has started
   
   const engineRef = useRef(null);
   const messagesEndRef = useRef(null);
+
+  // --- NEW: DEVICE DETECTION ---
+  const isMobile = () => /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
+  const initEngine = async () => {
+    if (isReady || isInitializing) return;
+    setIsInitializing(true);
+    try {
+      const selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
+      const engine = await webllm.CreateMLCEngine(selectedModel, {
+        initProgressCallback: (report) => setLoadProgress(Math.round(report.progress * 100)),
+      });
+      engineRef.current = engine;
+      setIsReady(true);
+    } catch (err) { 
+      console.error("WebLLM Error:", err); 
+      setIsInitializing(false);
+    }
+  };
+
+  // --- TRIGGER LOADING BASED ON DEVICE ---
+  useEffect(() => {
+    if (!isMobile()) {
+      // Laptop/PC: Load immediately
+      initEngine();
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => { if (!hasClicked && !isOpen) setShowTooltip(true); }, 4000);
@@ -601,9 +629,15 @@ const Chatbot = () => {
   }, [hasClicked, isOpen]);
 
   const handleToggle = () => {
+    if (!isOpen) {
+      setHasClicked(true);
+      setShowTooltip(false);
+      // Mobile: Start loading only when first opened
+      if (isMobile() && !isReady) {
+        initEngine();
+      }
+    }
     setIsOpen(!isOpen);
-    setHasClicked(true);
-    setShowTooltip(false);
   };
 
   const findFastResponse = (question) => {
@@ -637,20 +671,6 @@ const Chatbot = () => {
   };
 
   const SYSTEM_PROMPT = "You are NITHYA, Nithin's fast AI assistant. Answer in 1-2 short sentences only.";
-
-  useEffect(() => {
-    const initEngine = async () => {
-      try {
-        const selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
-        const engine = await webllm.CreateMLCEngine(selectedModel, {
-          initProgressCallback: (report) => setLoadProgress(Math.round(report.progress * 100)),
-        });
-        engineRef.current = engine;
-        setIsReady(true);
-      } catch (err) { console.error("WebLLM Error:", err); }
-    };
-    initEngine();
-  }, []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -708,80 +728,25 @@ const Chatbot = () => {
   return (
     <>
       <style>{`
-        /* SEAMLESS MERGED FLOATING CONTAINER */
-        .chat-floating-wrapper { 
-          position: fixed; 
-          bottom: 30px; 
-          right: 30px; 
-          display: flex; 
-          align-items: center; 
-          z-index: 1000; 
-          cursor: pointer; 
-          animation: globalFloat 3s ease-in-out infinite; 
-          transition: all 0.3s ease;
-          gap: 0; /* REMOVES ANY VISUAL GAP */
-        }
-        
-        /* MERGED LABEL - NITHYA */
-        .chat-label-attached { 
-            background: var(--accent-color); 
-            color: white; 
-            padding: 10px 25px 10px 20px; 
-            border-radius: 25px 0 0 25px; 
-            font-weight: 800; 
-            font-size: 0.9rem; 
-            letter-spacing: 1.5px; 
-            border: 1px solid var(--accent-color); 
-            border-right: none; /* REMOVES DIVIDING LINE */
-            transition: all 0.3s ease; 
-            margin-right: -15px; /* OVERLAPS LABEL UNDER ICON */
-        }
-
-        /* MERGED ICON CIRCLE */
-        .chat-toggle-main { 
-            width: 65px; 
-            height: 65px; 
-            background: var(--accent-color); 
-            color: white; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            border: 1px solid var(--accent-color);
-            transition: all 0.3s ease; 
-        }
-
-        /* UNIFIED HOVER GLOW & SCALE */
+        .chat-floating-wrapper { position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; z-index: 1000; cursor: pointer; animation: globalFloat 3s ease-in-out infinite; transition: all 0.3s ease; gap: 0; }
+        .chat-label-attached { background: var(--accent-color); color: white; padding: 10px 25px 10px 20px; border-radius: 25px 0 0 25px; font-weight: 800; font-size: 0.9rem; letter-spacing: 1.5px; border: 1px solid var(--accent-color); border-right: none; transition: all 0.3s ease; margin-right: -15px; }
+        .chat-toggle-main { width: 65px; height: 65px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid var(--accent-color); transition: all 0.3s ease; }
         .chat-floating-wrapper:hover { transform: scale(1.08); }
-        
-        .chat-floating-wrapper:hover .chat-label-attached,
-        .chat-floating-wrapper:hover .chat-toggle-main { 
-            box-shadow: 0 0 25px var(--accent-color); 
-            filter: brightness(1.1); 
-        }
-        
+        .chat-floating-wrapper:hover .chat-label-attached, .chat-floating-wrapper:hover .chat-toggle-main { box-shadow: 0 0 25px var(--accent-color); filter: brightness(1.1); }
         .chat-floating-wrapper:hover .chat-toggle-main { transform: rotate(8deg); }
-
         @keyframes globalFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
         .welcome-tip { position: absolute; top: -55px; right: 0; background: var(--accent-color); color: white; padding: 8px 15px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; box-shadow: 0 5px 15px rgba(37,99,235,0.4); }
         .welcome-tip::after { content: ''; position: absolute; bottom: -6px; right: 25px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid var(--accent-color); }
-        
         .notification-dot { position: absolute; top: 5px; right: 5px; width: 12px; height: 12px; background: #ff3333; border-radius: 50%; border: 2px solid white; animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } }
-        
         .chat-window { position: fixed; bottom: 110px; right: 30px; width: 350px; height: 500px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; }
         .chat-header { background: var(--accent-color); padding: 15px; color: white; display: flex; justify-content: space-between; align-items: center; }
         .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--bg-primary); }
         .message { max-width: 85%; padding: 10px 14px; border-radius: 15px; font-size: 0.9rem; line-height: 1.4; position: relative; }
         .message.bot { background: var(--bg-secondary); color: var(--text-primary); align-self: flex-start; }
         .message.user { background: var(--accent-color); color: white; align-self: flex-end; }
-        
         .thinking-dots::after { content: '...'; display: inline-block; width: 0px; overflow: hidden; vertical-align: bottom; animation: dots 1.5s steps(4, end) infinite; }
         @keyframes dots { to { width: 1.25em; } }
-        
         .progress-bar { height: 4px; background: #10b981; transition: width 0.3s; }
         .chat-input-area { padding: 15px; display: flex; gap: 10px; background: var(--bg-card); border-top: 1px solid var(--border-color); }
         .chat-input-area input { flex: 1; background: var(--bg-secondary); border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 20px; color: var(--text-primary); outline: none; }
@@ -824,11 +789,11 @@ const Chatbot = () => {
           <div className="chat-input-area">
             <input 
               type="text" 
-              placeholder={isReady ? (isTyping ? "Nithya is responding..." : "Ask me anything...") : "Waking up AI..."} 
+              placeholder={isReady ? (isTyping ? "Nithya is responding..." : "Ask me anything...") : (isInitializing ? "Waking up AI..." : "Tap to wake up AI")} 
               value={input} 
               onChange={(e) => setInput(e.target.value)} 
               onKeyDown={(e) => e.key === "Enter" && handleSendMessage()} 
-              disabled={isTyping} 
+              disabled={isTyping || !isReady} 
             />
             <button 
               onClick={handleSendMessage} 
