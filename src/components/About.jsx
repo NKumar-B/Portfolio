@@ -1,0 +1,286 @@
+import { FaLaptopCode, FaBrain, FaMicrochip } from 'react-icons/fa';
+
+const About = () => {
+  const highlights = [
+    {
+      icon: <FaLaptopCode />,
+      title: "Full Stack Dev",
+      desc: "Building scalable web apps with Java, Python & Modern Frameworks."
+    },
+    {
+      icon: <FaBrain />,
+      title: "AI & ML",
+      desc: "Exploring Data Science, Prompt Engineering & Intelligent Systems."
+    },
+    {
+      icon: <FaMicrochip />,
+      title: "IoT & Systems",
+      desc: "Connecting software to the physical world through smart devices."
+    }
+  ];
+
+  return (
+    <>
+      <style>{`
+        /* Section Background */
+        .about-section {
+          background: var(--bg-primary); 
+          padding: 100px 0;
+          position: relative;
+          overflow: hidden;
+          transition: background 0.3s ease;
+        }
+
+        /* --- SECTION HEADING & SUBHEADING GLOW --- */
+        .section-title {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: var(--text-primary);
+          margin-bottom: 15px;
+          transition: all 0.3s ease;
+        }
+
+        .section-subtitle {
+           transition: all 0.3s ease;
+           color: var(--text-secondary);
+        }
+
+        /* Activates glow for both when the section is hovered */
+        .about-section:hover .section-title {
+          text-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .about-section:hover .section-subtitle {
+          color: var(--text-primary);
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Container Layout */
+        .about-content {
+          display: flex;
+          align-items: flex-start;
+          gap: 60px;
+          margin-top: 40px;
+          position: relative;
+          z-index: 2;
+        }
+
+        /* --- LEFT SIDE: TEXT --- */
+        .about-text {
+          flex: 1;
+          max-width: 600px;
+        }
+
+        .about-heading {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: var(--text-primary); 
+          line-height: 1.2;
+          margin-bottom: 25px;
+        }
+
+        .highlight {
+          color: var(--accent-color); 
+          display: inline-block;
+          position: relative;
+        }
+
+        .about-desc {
+          font-size: 1.1rem;
+          color: var(--text-secondary); 
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .about-desc strong {
+          color: var(--text-primary); 
+          font-weight: 600;
+        }
+
+        /* Status Badge */
+        .status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: var(--bg-secondary); 
+          color: #15803d;      
+          padding: 10px 20px;
+          border-radius: 30px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-top: 20px;
+          border: 1px solid var(--border-color); 
+          transition: all 0.3s ease;
+        }
+
+        .about-section:hover .status-badge {
+           box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+        
+        [data-theme="dark"] .status-badge {
+           color: #4ade80; 
+           border-color: #166534;
+           background: rgba(22, 101, 52, 0.2);
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background: #22c55e;
+          border-radius: 50%;
+          box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+          animation: pulseGreen 2s infinite;
+        }
+
+        @keyframes pulseGreen {
+          0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+          70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* --- RIGHT SIDE: CARDS --- */
+        .about-grid {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .about-card {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 25px;
+          background: var(--bg-card); 
+          border: 1px solid var(--border-color); 
+          border-radius: 16px;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          box-shadow: 0 4px 6px var(--shadow-color); 
+        }
+
+        .about-card:hover {
+          transform: translateY(-5px);
+          border-color: var(--accent-color); 
+          box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); 
+        }
+
+        /* Icon Wrapper Glow */
+        .card-icon-wrapper {
+          width: 60px;
+          height: 60px;
+          background: var(--bg-secondary); 
+          color: var(--accent-color);      
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.8rem;
+          flex-shrink: 0;
+          transition: all 0.3s ease;
+        }
+
+        .about-card:hover .card-icon-wrapper {
+          background: var(--accent-color);
+          color: white;
+          transform: rotate(-10deg);
+          box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .card-content h4 {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--text-primary); 
+          margin-bottom: 5px;
+          transition: all 0.3s ease;
+        }
+
+        .about-card:hover h4 {
+          color: var(--accent-color);
+          text-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .card-content p {
+          font-size: 0.95rem;
+          color: var(--text-secondary); 
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+          .about-content {
+            flex-direction: column;
+            gap: 40px;
+          }
+          .about-text {
+            max-width: 100%;
+            text-align: center;
+          }
+          .status-badge {
+            justify-content: center;
+            width: 100%;
+          }
+          .about-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+          }
+        }
+      `}</style>
+
+      {/* --- JSX STRUCTURE --- */}
+      <section id="about" className="section about-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">About Me</h2>
+            <p className="section-subtitle">Passionate about bridging technology and innovation.</p>
+          </div>
+          
+          <div className="about-content">
+            {/* LEFT SIDE */}
+            <div className="about-text">
+              <h3 className="about-heading">
+                Developing with <span className="highlight">Purpose</span> & <span className="highlight">Passion</span>.
+              </h3>
+              
+              <p className="about-desc">
+                Thanks for showing interest in knowing me! I am an aspiring <strong>Full Stack Developer</strong> driven by the challenge of solving real-world problems through code.
+              </p>
+              
+              <p className="about-desc">
+                My journey involves more than just writing code; it's about creating <strong>secure, scalable, and intelligent systems</strong>. I have a strong foundation in <strong>Java and Python</strong>, and I constantly push my boundaries by exploring <strong>Artificial Intelligence</strong> and <strong>IoT development</strong>.
+              </p>
+
+              <p className="about-desc">
+                I am passionate about writing clean, efficient code and collaborating on innovative projects. Currently, I am looking for opportunities to apply my skills in a professional environment.
+              </p>
+
+              {/* Status Badge */}
+              <div className="status-badge">
+                <span className="status-dot"></span>
+                Open to Internships & Entry-level Opportunities
+              </div>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="about-grid">
+              {highlights.map((item, index) => (
+                <div className="about-card" key={index}>
+                  <div className="card-icon-wrapper">
+                    {item.icon}
+                  </div>
+                  <div className="card-content">
+                    <h4>{item.title}</h4>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default About;
