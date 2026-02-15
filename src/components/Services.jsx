@@ -232,7 +232,7 @@ const Services = () => {
       <section id="services" className="services-section">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Professional Expertise</h2>
+            <h2 className="section-title">My Services</h2>
             <p className="section-subtitle">Delivering high-impact solutions across multiple technology domains.</p>
           </div>
 

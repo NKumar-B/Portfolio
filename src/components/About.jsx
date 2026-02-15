@@ -72,7 +72,7 @@ const About = () => {
         }
 
         .about-heading {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
           font-weight: 800;
           color: var(--text-primary); 
           line-height: 1.2;

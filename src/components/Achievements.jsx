@@ -384,7 +384,7 @@ const Achievements = () => {
       <section id="achievements" className="section achievements-section">
         <div className="achievements-container">
           <div className="section-header text-center">
-            <h2 className="section-title">Certifications</h2>
+            <h2 className="section-title">Achievements</h2>
             <p className="section-subtitle">
               Verified credentials validating my technical expertise.
             </p>

@@ -383,7 +383,7 @@ const Hero = () => {
 
         /* --- SECTION HEADING & SUBHEADING GLOW --- */
         .hero h1 {
-          font-size: 3.5rem;
+          font-size: 3.2rem;
           font-weight: 800;
           color: var(--text-primary);
           line-height: 1.1;
@@ -581,7 +581,7 @@ const Hero = () => {
               I am a{' '}
               <span>
                 <Typewriter
-                  words={['Fullstack Java Developer.', 'AI & DS Enthusiast.', 'Tech Innovator.']}
+                  words={['Fullstack Java Developer.','Data Scientist.', 'AI & DS Enthusiast.', 'Tech Innovator.']}
                   loop={0} cursor cursorStyle='|' typeSpeed={80} deleteSpeed={50} delaySpeed={2000}
                 />
               </span>
