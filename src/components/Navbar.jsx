@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -22,6 +23,7 @@ const Navbar = () => {
   // 2. Active Section Detection
   useEffect(() => {
     const handleActiveLink = () => {
+      // Add 'services' and others to the list
       const sections = ['home', 'about', 'skills','achievements','internships', 'projects','services', 'resume', 'contact'];
       
       let current = 'home';
@@ -30,6 +32,7 @@ const Navbar = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
+          // Logic: If top of section is near middle of viewport
           if (rect.top <= 150 && rect.bottom >= 150) {
             current = section;
           }
@@ -42,32 +45,26 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleActiveLink);
   }, []);
 
-  // 3. Calculate Slider Position (UPDATED: Added window resize listener)
+  // 3. Calculate Slider Position
   useEffect(() => {
-    const updateIndicator = () => {
-      // Logic: Only calculate if screen is wider than 900px (matching the CSS breakpoint)
-      if (window.innerWidth > 900) {
-        const activeItem = document.querySelector(`.nav-item[href="#${activeSection}"]`);
-        const navList = navRef.current;
+    // Only calculate if not on mobile (isOpen check is a simple proxy, better to use media query)
+    if (window.innerWidth > 768) {
+      const activeItem = document.querySelector(`.nav-item[href="#${activeSection}"]`);
+      const navList = navRef.current;
 
-        if (activeItem && navList) {
-          const itemRect = activeItem.getBoundingClientRect();
-          const listRect = navList.getBoundingClientRect();
+      if (activeItem && navList) {
+        const itemRect = activeItem.getBoundingClientRect();
+        const listRect = navList.getBoundingClientRect();
 
-          setIndicatorStyle({
-            left: itemRect.left - listRect.left, 
-            width: itemRect.width,
-            opacity: 1
-          });
-        }
-      } else {
-        setIndicatorStyle({ left: 0, width: 0, opacity: 0 }); // Hide on mobile
+        setIndicatorStyle({
+          left: itemRect.left - listRect.left, 
+          width: itemRect.width,
+          opacity: 1
+        });
       }
-    };
-
-    updateIndicator();
-    window.addEventListener('resize', updateIndicator);
-    return () => window.removeEventListener('resize', updateIndicator);
+    } else {
+      setIndicatorStyle({ opacity: 0 }); // Hide on mobile
+    }
   }, [activeSection, isOpen]);
 
   return (
@@ -92,7 +89,7 @@ const Navbar = () => {
 
           <ul className={isOpen ? "nav-links active" : "nav-links"} ref={navRef}>
             
-            {/* SLIDING INDICATOR (Blue Line) - Only visible on Desktop */}
+            {/* SLIDING INDICATOR (Blue Line) */}
             <li 
               className="nav-indicator" 
               style={{ 
@@ -105,7 +102,7 @@ const Navbar = () => {
             {['Home', 'About','Skills','Achievements','Internships','Projects','Services', 'Resume', 'Contact'].map((item) => {
               const lowerItem = item.toLowerCase();
               return (
-                <li key={item} style={{ width: isOpen ? '100%' : 'auto' }}>
+                <li key={item}>
                   <a 
                     href={`#${lowerItem}`} 
                     className={activeSection === lowerItem ? 'nav-item active' : 'nav-item'}
@@ -123,8 +120,9 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* --- EMBEDDED CSS --- */}
+      {/* --- EMBEDDED CSS (Updated for Dark Mode) --- */}
       <style>{`
+        /* 1. Navbar Base Styling */
         .navbar {
           width: 100%;
           height: 80px;
@@ -133,13 +131,14 @@ const Navbar = () => {
           left: 0;
           z-index: 1000;
           transition: all 0.4s ease-in-out;
-          background: var(--nav-bg); 
-          box-shadow: 0 1px 0 var(--border-color); 
+          background: var(--nav-bg); /* Use theme variable */
+          box-shadow: 0 1px 0 var(--border-color); /* Subtle border */
           backdrop-filter: blur(10px);
         }
 
+        /* Scrolled State */
         .navbar.scrolled {
-          height: 70px;
+          height: 70px; /* Compresses slightly */
           box-shadow: 0 4px 20px var(--shadow-color);
         }
 
@@ -153,6 +152,7 @@ const Navbar = () => {
           margin: 0 auto;
         }
 
+        /* 2. Logo Styling */
         .logo a {
           text-decoration: none;
           display: flex;
@@ -173,37 +173,39 @@ const Navbar = () => {
         .name-text {
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--text-primary);
+          color: var(--text-primary); /* Dark mode compatible */
           animation: slideIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* 3. Navigation Links */
         .nav-links {
           display: flex;
           gap: 30px;
           list-style: none;
-          position: relative;
+          position: relative; /* Needed for indicator positioning */
         }
 
         .nav-item {
           font-size: 1rem;
           font-weight: 500;
-          color: var(--text-secondary);
+          color: var(--text-secondary); /* Grey in light, lighter in dark */
           text-decoration: none;
           padding: 8px 0;
           position: relative;
-          transition: all 0.3s ease;
+          transition: color 0.3s ease;
           cursor: pointer;
-          display: block;
         }
 
+        /* Hover & Active Text Color */
         .nav-item:hover, .nav-item.active {
-          color: var(--accent-color);
+          color: var(--accent-color); /* Blue Highlight */
           font-weight: 700;
         }
 
+        /* 4. Sliding Indicator (The Blue Line) */
         .nav-indicator {
           position: absolute;
           bottom: 0;
@@ -215,6 +217,7 @@ const Navbar = () => {
           z-index: 10;
         }
 
+        /* 5. Mobile Responsiveness */
         .hamburger {
           display: none;
           font-size: 1.6rem;
@@ -222,7 +225,6 @@ const Navbar = () => {
           cursor: pointer;
         }
 
-        /* 5. Mobile Responsiveness FIXES */
         @media (max-width: 900px) {
           .hamburger { display: block; }
 
@@ -232,35 +234,31 @@ const Navbar = () => {
             right: -100%;
             width: 100%;
             height: calc(100vh - 70px);
-            background: var(--bg-card); 
+            background: var(--bg-card); /* Theme background */
             flex-direction: column;
             justify-content: flex-start;
-            padding: 50px 0;
+            padding-top: 50px;
             align-items: center;
             transition: right 0.3s ease;
+            box-shadow: none;
             border-top: 1px solid var(--border-color);
-            overflow-y: auto;
           }
 
           .nav-links.active { right: 0; }
 
           .nav-item {
             font-size: 1.2rem;
-            padding: 15px 0;
+            margin-bottom: 25px;
             width: 100%;
             text-align: center;
           }
           
-          /* CRITICAL FIX: Explicitly hide the sliding line on mobile */
-          .nav-indicator { 
-            display: none !important; 
-            opacity: 0 !important;
-          }
+          /* Hide the sliding line on mobile */
+          .nav-indicator { display: none !important; }
           
-          /* Cleaner active state for mobile stacked links */
+          /* Simple active state for mobile */
           .nav-item.active {
              background: rgba(37, 99, 235, 0.1);
-             border-left: 4px solid var(--accent-color);
              border-right: 4px solid var(--accent-color);
           }
         }
