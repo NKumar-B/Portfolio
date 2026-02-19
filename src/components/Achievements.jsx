@@ -103,6 +103,51 @@ const Achievements = () => {
           transition: background 0.3s ease;
         }
 
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
+          text-align: center;
+        }
+
+        .section-title {
+          font-size: 3rem;
+          font-weight: 800;
+          color: var(--text-primary);
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
+        }
+
+        .achievements-section:hover .section-title {
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
+        }
+
+        .section-subtitle {
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
+        }
+
+        .achievements-section:hover .section-subtitle {
+          color: var(--text-primary);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
+        }
+
         /* Container */
         .achievements-container {
           max-width: 1000px;
@@ -133,30 +178,6 @@ const Achievements = () => {
         }
         .achievements-grid::-webkit-scrollbar { 
           display: none; 
-        }
-
-        /* --- SECTION HEADING & SUBHEADING GLOW --- */
-        .section-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: var(--text-primary);
-          margin-bottom: 15px;
-          transition: all 0.3s ease;
-        }
-
-        .section-subtitle {
-          transition: all 0.3s ease;
-          color: var(--text-secondary);
-        }
-
-        /* Both heading and sub-heading glow when section is hovered */
-        .achievements-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .achievements-section:hover .section-subtitle {
-          color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         /* --- NAVIGATION BUTTONS --- */
@@ -204,7 +225,6 @@ const Achievements = () => {
           box-sizing: border-box;
         }
 
-        /* Hover: Gradient Border & Glow Overlay */
         .cert-card::before {
           content: '';
           position: absolute;
@@ -214,7 +234,7 @@ const Achievements = () => {
           background: linear-gradient(45deg, var(--accent-color), #06b6d4, var(--accent-color));
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
-          mask-composite: exclude;
+          -webkit-mask-composite: exclude;
           opacity: 0;
           transition: opacity 0.3s ease;
           pointer-events: none;
@@ -225,14 +245,12 @@ const Achievements = () => {
           opacity: 1;
         }
 
-        /* Hover: Lift & Glow Effect */
         .cert-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
           border-color: var(--accent-color);
         }
 
-        /* Header: Icon & Verified Badge */
         .cert-header {
           display: flex;
           justify-content: space-between;
@@ -268,11 +286,7 @@ const Achievements = () => {
           border: 1px solid #d1fae5;
           transition: all 0.3s ease;
         }
-        .cert-card:hover .verified-badge {
-          box-shadow: 0 0 10px rgba(5, 150, 105, 0.4);
-        }
 
-        /* Content Styling */
         .cert-content {
           position: relative;
           z-index: 2;
@@ -286,9 +300,6 @@ const Achievements = () => {
           line-height: 1.4;
           transition: all 0.3s ease;
         }
-        .cert-card:hover .cert-content h3 {
-          text-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
-        }
 
         .cert-issuer {
           font-size: 0.85rem;
@@ -297,7 +308,6 @@ const Achievements = () => {
           font-weight: 500;
         }
 
-        /* Skills Tags */
         .cert-skills {
           display: flex;
           flex-wrap: wrap;
@@ -322,7 +332,6 @@ const Achievements = () => {
            transform: translateY(-2px) scale(1.05);
         }
 
-        /* Footer: ID & Link */
         .cert-footer {
           display: flex;
           justify-content: space-between;
@@ -344,11 +353,6 @@ const Achievements = () => {
           padding: 4px 8px;
           border-radius: 6px;
           transition: all 0.3s ease;
-          cursor: text;
-        }
-        .credential-code:hover {
-          color: var(--accent-color);
-          text-shadow: 0 0 5px var(--accent-color);
         }
 
         .btn-verify-icon {
@@ -365,25 +369,23 @@ const Achievements = () => {
         .btn-verify-icon:hover {
           background: var(--accent-color);
           color: white;
-          border-color: var(--accent-color);
           transform: rotate(45deg) scale(1.1);
           box-shadow: 0 0 15px var(--accent-color);
         }
 
         @media (max-width: 900px) {
           .scroll-btn { display: none; }
-          .achievements-grid { padding-bottom: 20px; }
           .cert-card {
             min-width: 85%;
             margin-right: 15px;
           }
+          .section-title { font-size: 2.2rem; }
         }
       `}</style>
 
-      {/* --- JSX STRUCTURE --- */}
       <section id="achievements" className="section achievements-section">
         <div className="achievements-container">
-          <div className="section-header text-center">
+          <div className="section-header">
             <h2 className="section-title">Achievements</h2>
             <p className="section-subtitle">
               Verified credentials validating my technical expertise.
@@ -391,17 +393,13 @@ const Achievements = () => {
           </div>
 
           <div className="achievements-slider-wrapper">
-            {/* Left Button */}
             <button className="scroll-btn left" onClick={() => scroll('left')}>
               <FaChevronLeft />
             </button>
 
-            {/* Scrollable Container */}
             <div className="achievements-grid" ref={scrollRef}>
               {certifications.map((cert, index) => (
                 <div className="cert-card" key={index}>
-                  
-                  {/* Header: Icon + Badge */}
                   <div className="cert-header">
                     <div className="cert-icon-box">
                       {cert.icon}
@@ -411,7 +409,6 @@ const Achievements = () => {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="cert-content">
                     <h3>{cert.title}</h3>
                     <p className="cert-issuer">{cert.issuer} • {cert.date}</p>
@@ -423,7 +420,6 @@ const Achievements = () => {
                     </div>
                   </div>
 
-                  {/* Footer */}
                   <div className="cert-footer">
                     <div className="credential-code" title="Copy ID">
                       <FaFingerprint /> {cert.credentialId}
@@ -432,12 +428,10 @@ const Achievements = () => {
                       <FaExternalLinkAlt />
                     </a>
                   </div>
-
                 </div>
               ))}
             </div>
 
-            {/* Right Button */}
             <button className="scroll-btn right" onClick={() => scroll('right')}>
               <FaChevronRight />
             </button>

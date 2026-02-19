@@ -58,34 +58,58 @@ const Projects = () => {
       <style>{`
         .projects-section {
           background: var(--bg-secondary);
-          padding: 80px 0;
+          padding: 100px 0;
           position: relative;
           transition: background 0.3s ease;
+          overflow: hidden;
         }
 
-        /* --- SECTION HEADING & SUBHEADING GLOW --- */
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
+          text-align: center;
+        }
+
         .section-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
           font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 15px;
-          transition: all 0.3s ease;
-        }
-
-        .section-subtitle {
-           transition: all 0.3s ease;
-           color: var(--text-secondary);
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
         }
 
         .projects-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
+        }
+
+        .section-subtitle {
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
         }
 
         .projects-section:hover .section-subtitle {
           color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
         }
 
+        /* --- PRESERVED PROJECT CARD LOGIC --- */
         .projects-container {
           max-width: 1200px;
           margin: 0 auto;
@@ -150,18 +174,17 @@ const Projects = () => {
           transform: scale(1.1);
         }
 
-        /* --- UPDATED OVERLAY INTENSITY --- */
         .project-overlay {
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
-          background: rgba(37, 99, 235, 0.4); /* Reduced from 0.85 to 0.4 */
+          background: rgba(37, 99, 235, 0.4); 
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 15px;
           opacity: 0;
           transition: opacity 0.3s ease;
-          backdrop-filter: blur(2px); /* Frosted glass effect */
+          backdrop-filter: blur(2px);
         }
 
         .project-card:hover .project-overlay { opacity: 1; }
@@ -257,12 +280,13 @@ const Projects = () => {
         @media (max-width: 768px) {
           .project-card { min-width: 280px; }
           .nav-btn { display: none; }
+          .section-title { font-size: 2.2rem; }
         }
       `}</style>
 
       <section id="projects" className="section projects-section">
         <div className="projects-container">
-          <div className="section-header text-center" style={{ marginBottom: '50px' }}>
+          <div className="section-header">
             <h2 className="section-title">Featured Projects</h2>
             <p className="section-subtitle">A showcase of my recent work in Web Dev, AI, and IoT.</p>
           </div>

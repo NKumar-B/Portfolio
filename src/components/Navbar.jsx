@@ -22,7 +22,7 @@ const Navbar = () => {
   // 2. Active Section Detection
   useEffect(() => {
     const handleActiveLink = () => {
-      const sections = ['home', 'about', 'skills','achievements','internships', 'projects','services', 'resume', 'contact'];
+      const sections = ['home', 'about', 'skills','achievements','internships', 'projects','publications','services', 'resume', 'contact'];
       
       let current = 'home';
       
@@ -79,7 +79,7 @@ const Navbar = () => {
           <h1 className="logo">
             <a href="#home">
               {activeSection === 'home' ? (
-                <span className="portfolio-text">PORTFOLIO</span>
+                <span className="portfolio-text"> PORTFOLIO</span>
               ) : (
                 <span className="name-text">Nithin Kumar</span>
               )}
@@ -102,7 +102,7 @@ const Navbar = () => {
               }} 
             />
 
-            {['Home', 'About','Skills','Achievements','Internships','Projects','Services', 'Resume', 'Contact'].map((item) => {
+            {['Home', 'About','Skills','Achievements','Internships','Projects','Publications','Services', 'Resume', 'Contact'].map((item) => {
               const lowerItem = item.toLowerCase();
               return (
                 <li key={item} style={{ width: isOpen ? '100%' : 'auto' }}>
@@ -171,10 +171,19 @@ const Navbar = () => {
         }
 
         .name-text {
+          // font-size: 1.5rem;
+          // font-weight: 700;
+          // color: var(--text-primary);
+          // animation: slideIn 0.5s ease-in-out;
+
           font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--text-primary);
-          animation: slideIn 0.5s ease-in-out;
+          font-weight: 900;
+          letter-spacing: 1px;
+          background: linear-gradient(to right, var(--accent-color), #9333ea);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-transform: uppercase;
+          animation: fadeIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

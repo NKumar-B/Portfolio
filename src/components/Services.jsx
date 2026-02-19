@@ -67,33 +67,56 @@ const Services = () => {
     <>
       <style>{`
         .services-section {
-          background: var(--bg-primary);
+          background: var(--bg-secondary);
           padding: 100px 0;
           transition: background 0.3s ease;
           position: relative;
+          overflow: hidden;
         }
 
-        /* --- SECTION HEADING & SUBHEADING GLOW --- */
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
+          text-align: center;
+        }
+
         .section-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
           font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 15px;
-          transition: all 0.3s ease;
-        }
-
-        .section-subtitle {
-           transition: all 0.3s ease;
-           color: var(--text-secondary);
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
         }
 
         .services-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
+        }
+
+        .section-subtitle {
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
         }
 
         .services-section:hover .section-subtitle {
           color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
         }
 
         .services-grid {
@@ -103,7 +126,6 @@ const Services = () => {
           margin-top: 60px;
         }
 
-        /* --- CARD GLOW EFFECT --- */
         .service-card {
           background: var(--bg-card);
           border-radius: 24px;
@@ -149,7 +171,6 @@ const Services = () => {
           flex-direction: column;
         }
 
-        /* --- ICON IN FRONT OF HEADING --- */
         .service-header {
           display: flex;
           align-items: center;
@@ -227,11 +248,15 @@ const Services = () => {
           box-shadow: 0 0 10px var(--accent-color);
           transform: translateY(-2px);
         }
+
+        @media (max-width: 768px) {
+          .section-title { font-size: 2.2rem; }
+        }
       `}</style>
 
       <section id="services" className="services-section">
         <div className="container">
-          <div className="section-header text-center">
+          <div className="section-header">
             <h2 className="section-title">My Services</h2>
             <p className="section-subtitle">Delivering high-impact solutions across multiple technology domains.</p>
           </div>

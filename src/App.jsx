@@ -13,6 +13,7 @@ import Greeting from './components/Greeting';
 import Services from './components/Services';
 import Achievements from './components/Achievements';
 import Internships from './components/Internships';
+import Publications from './components/Publications';
 
 // --- Theme Imports ---
 import { ThemeProvider } from './components/ThemeContext';
@@ -48,6 +49,7 @@ function App() {
           <Achievements />
           <Internships />
           <Projects />
+          <Publications />
           <Services />
           <Resume />
           <Contact />

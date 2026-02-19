@@ -591,12 +591,14 @@ const Chatbot = () => {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [isInitializing, setIsInitializing] = useState(false); // Track if loading has started
+  const [isInitializing, setIsInitializing] = useState(false); 
   
   const engineRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  // --- NEW: DEVICE DETECTION ---
+  // --- Utility: Artificial Delay ---
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   const isMobile = () => /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
   const initEngine = async () => {
@@ -615,10 +617,8 @@ const Chatbot = () => {
     }
   };
 
-  // --- TRIGGER LOADING BASED ON DEVICE ---
   useEffect(() => {
     if (!isMobile()) {
-      // Laptop/PC: Load immediately
       initEngine();
     }
   }, []);
@@ -632,7 +632,6 @@ const Chatbot = () => {
     if (!isOpen) {
       setHasClicked(true);
       setShowTooltip(false);
-      // Mobile: Start loading only when first opened
       if (isMobile() && !isReady) {
         initEngine();
       }
@@ -643,28 +642,30 @@ const Chatbot = () => {
   const findFastResponse = (question) => {
     const q = question.toLowerCase();
     
-    if (q.includes("hi") || q.includes("hello")) {
+    if (q.includes("nithin") || q.includes("who are you") || q.includes("about you")) {
+      if (q.includes("who") || q.includes("tell") || q.includes("about") || q.includes("what")) {
+        return "Nithin Kumar is a **Fullstack Java Developer** and **Tech Innovator**. He is an **AI & DS Enthusiast** with three major internships: **Google AI-ML** (Sep 2025), **Web Full Stack** (Jun 2025), and **AWS Gen-AI** (Dec 2025). His work spans from **Drone technology** to advanced **Computer Vision** projects.";
+      }
+    }
+
+    if (q.includes("hi") || q.includes("hello") || q.includes("hey")) {
       return "Hello! I'm Nithya, **Nithin's AI assistant**. How can I help you today?";
     }
 
-   if (q.includes("who is nithin") || q.includes("tell me about nithin") || q.includes("who are you")) {
-      return "Nithin Kumar is a **Fullstack Java Developer** and **Tech Innovator**. He is an **AI & DS Enthusiast** with three major internships: **Google AI-ML** (Sep 2025), **Web Full Stack** (Jun 2025), and **AWS Gen-AI** (Dec 2025). His work spans from **Drone technology** to advanced **Computer Vision** projects.";
-    }
-
-    if (q.includes("skill") || q.includes("tech")) {
+    if (q.includes("skill") || q.includes("tech") || q.includes("language")) {
       return "Nithin is a **Fullstack Java Developer**. Core Skills: Java, Python, JavaScript, React, Node.js, Spring Boot, Machine Learning, and TensorFlow.";
     }
 
-    if (q.includes("internship") || q.includes("experience")) {
-      return "Nithin completed a **Google AI-ML Internship** (Sep 2025), a **Web Full Stack Internship** (Jun 2025), and an **AWS Gen-AI Internship** (Dec 2025). He also has experience in **Drone troubleshooting** and **LLM fine-tuning**.";
+    if (q.includes("internship") || q.includes("experience") || q.includes("work")) {
+      return "Nithin completed a **Google AI-ML Internship** (Sep 2025), a **Web Full Stack Internship** (Jun 2025), and an **AWS Gen-AI Internship** (Dec 2025).";
     }
 
-    if (q.includes("project") || q.includes("work")) {
+    if (q.includes("project") || q.includes("build") || q.includes("made")) {
       return "Key projects include **AirTrace** (gesture drawing), **AetherLens** (FaceMesh), **AirLens** (Object Detection), and **SWAN LAB**.";
     }
 
-    if (q.includes("resume") || q.includes("cv")) {
-      return "You can download Nithin's **Resume** directly from the navigation bar above!";
+    if (q.includes("resume") || q.includes("cv") || q.includes("hire")) {
+      return "You can download Nithin's **Resume** directly from the navigation bar at the top of the page!";
     }
 
     return null; 
@@ -683,8 +684,24 @@ const Chatbot = () => {
     setMessages((prev) => [...prev, { text: userQuery, isBot: false }]);
 
     const fastReply = findFastResponse(userQuery);
+    
+    // --- UPDATED: Fast Response with Delay ---
     if (fastReply) {
-      setMessages((prev) => [...prev, { text: fastReply, isBot: true }]);
+      setIsTyping(true);
+      // Show thinking state
+      setMessages((prev) => [...prev, { text: "Nithya is Thinking...", isBot: true, isThinking: true }]);
+      
+      // Natural delay (1.2 seconds)
+      await sleep(1200);
+      
+      // Swap thinking text for real answer
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = { text: fastReply, isBot: true, isThinking: false };
+        return updated;
+      });
+      
+      setIsTyping(false);
       return;
     }
 

@@ -8,39 +8,58 @@ const Resume = () => {
         /* --- ULTIMATE RESUME SECTION --- */
         .resume-section {
           position: relative;
-          padding: 80px 0;
-          background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+          padding: 100px 0;
+          background: var(--bg-primary);
           overflow: hidden;
           width: 100%;
           transition: background 0.3s ease;
+          border-top: 1px solid var(--border-color);
         }
 
-        /* --- SECTION HEADING & SUBHEADING GLOW (Matching Skills.jsx) --- */
-        .section-title {
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
           text-align: center;
-          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 3rem;
           font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 15px;
           position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
           z-index: 2;
-          transition: all 0.3s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
         }
 
         .resume-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
         }
 
         .section-subtitle-main {
-          text-align: center;
           color: var(--text-secondary);
-          margin-bottom: 40px;
-          transition: all 0.3s ease;
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
         }
 
         .resume-section:hover .section-subtitle-main {
           color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
         }
 
         /* Background Blur Blob */
@@ -182,7 +201,6 @@ const Resume = () => {
           filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.3));
         }
 
-        /* Stats Grid Glow */
         .stats-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -223,7 +241,6 @@ const Resume = () => {
           box-shadow: 0 0 10px var(--accent-color);
         }
 
-        /* --- BUTTONS GLOW --- */
         .resume-btns { display: flex; gap: 12px; }
 
         .btn-black {
@@ -271,6 +288,7 @@ const Resume = () => {
           .resume-content { text-align: center; }
           .stats-grid { grid-template-columns: 1fr; }
           .resume-btns { justify-content: center; }
+          .section-title { font-size: 2.2rem; }
         }
       `}</style>
 
@@ -278,11 +296,12 @@ const Resume = () => {
         <div className="resume-bg-blur"></div>
 
         <div className="container">
-          <h2 className="section-title">My Resume</h2>
-          <p className="section-subtitle-main">Detailed overview of my professional background and skills.</p>
+          <div className="section-header">
+            <h2 className="section-title">My Resume</h2>
+            <p className="section-subtitle-main">Detailed overview of my professional background and skills.</p>
+          </div>
           
           <div className="resume-container">
-            {/* --- 1. THE ORBITING VISUAL --- */}
             <div className="orbit-wrapper">
               <div className="center-doc">
                 <FaFilePdf />
@@ -297,7 +316,6 @@ const Resume = () => {
               </div>
             </div>
 
-            {/* --- 2. TEXT CONTENT --- */}
             <div className="resume-content">
               <div className="badge-pill">
                 <FaCheckCircle /> Ready to Hire

@@ -1,21 +1,21 @@
-import { FaLaptopCode, FaBrain, FaMicrochip } from 'react-icons/fa';
+import { FaUniversity, FaGraduationCap, FaSchool } from 'react-icons/fa';
 
 const About = () => {
-  const highlights = [
+  const education = [
     {
-      icon: <FaLaptopCode />,
-      title: "Full Stack Dev",
-      desc: "Building scalable web apps with Java, Python & Modern Frameworks."
+      icon: <FaGraduationCap />,
+      title: "Bachelor of Technology (B.Tech)",
+      desc: "Artificial Intelligence and Data Science | Mother Theresa Institute of Engineering and Technology, Palamaner | Currently Pursuing "
     },
     {
-      icon: <FaBrain />,
-      title: "AI & ML",
-      desc: "Exploring Data Science, Prompt Engineering & Intelligent Systems."
+      icon: <FaUniversity />,
+      title: "Intermediate (Class XII)",
+      desc: "MPC (Maths, Physics, Chemistry) | Sri Chaitanya Academy Junior College, Tirupati | May 2022"
     },
     {
-      icon: <FaMicrochip />,
-      title: "IoT & Systems",
-      desc: "Connecting software to the physical world through smart devices."
+      icon: <FaSchool />,
+      title: "Secondary School (Class X)",
+      desc: "SSC Board | ZPHigh School, Peddaupparapalle | April 2020"
     }
   ];
 
@@ -31,28 +31,49 @@ const About = () => {
           transition: background 0.3s ease;
         }
 
-        /* --- SECTION HEADING & SUBHEADING GLOW --- */
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
+          text-align: center;
+        }
+
         .section-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
           font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 15px;
-          transition: all 0.3s ease;
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
+        }
+
+        .about-section:hover .section-title {
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
         }
 
         .section-subtitle {
-           transition: all 0.3s ease;
-           color: var(--text-secondary);
-        }
-
-        /* Activates glow for both when the section is hovered */
-        .about-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
         }
 
         .about-section:hover .section-subtitle {
           color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
         }
 
         /* Container Layout */
@@ -138,7 +159,7 @@ const About = () => {
           100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
 
-        /* --- RIGHT SIDE: CARDS --- */
+        /* --- RIGHT SIDE: EDUCATION CARDS --- */
         .about-grid {
           flex: 1;
           display: flex;
@@ -164,7 +185,6 @@ const About = () => {
           box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); 
         }
 
-        /* Icon Wrapper Glow */
         .card-icon-wrapper {
           width: 60px;
           height: 60px;
@@ -206,7 +226,6 @@ const About = () => {
           line-height: 1.5;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 900px) {
           .about-content {
             flex-direction: column;
@@ -228,16 +247,14 @@ const About = () => {
         }
       `}</style>
 
-      {/* --- JSX STRUCTURE --- */}
       <section id="about" className="section about-section">
         <div className="container">
-          <div className="section-header text-center">
+          <div className="section-header">
             <h2 className="section-title">About Me</h2>
-            <p className="section-subtitle">Passionate about bridging technology and innovation.</p>
+            <p className="section-subtitle">A glimpse into my academic background and professional goals.</p>
           </div>
           
           <div className="about-content">
-            {/* LEFT SIDE */}
             <div className="about-text">
               <h3 className="about-heading">
                 Developing with <span className="highlight">Purpose</span> & <span className="highlight">Passion</span>.
@@ -255,16 +272,14 @@ const About = () => {
                 I am passionate about writing clean, efficient code and collaborating on innovative projects. Currently, I am looking for opportunities to apply my skills in a professional environment.
               </p>
 
-              {/* Status Badge */}
               <div className="status-badge">
                 <span className="status-dot"></span>
                 Open to Internships & Entry-level Opportunities
               </div>
             </div>
 
-            {/* RIGHT SIDE */}
             <div className="about-grid">
-              {highlights.map((item, index) => (
+              {education.map((item, index) => (
                 <div className="about-card" key={index}>
                   <div className="card-icon-wrapper">
                     {item.icon}

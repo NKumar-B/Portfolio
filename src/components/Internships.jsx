@@ -35,38 +35,60 @@ const Internships = () => {
   ];
 
   return (
-    <section id="internships" className="internships-section" style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)', padding: '80px 0' }}>
+    <section id="internships" className="internships-section" style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border-color)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
       <style>{`
-        /* --- SECTION HEADING & SUBHEADING GLOW --- */
+        /* --- SECTION HEADING & SUBHEADING AURA GLOW --- */
+        .section-header {
+          margin-bottom: 60px;
+          text-align: center;
+        }
+
         .section-title {
-          font-size: 2.5rem;
+          font-size: 3rem;
           font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 15px;
-          transition: all 0.3s ease;
+          position: relative;
+          display: inline-block;
+          padding: 10px 20px;
+          transition: all 0.5s ease;
+          /* Multi-layered Aura Glow */
+          text-shadow: 
+            0 0 10px rgba(37, 99, 235, 0.2),
+            0 0 20px rgba(37, 99, 235, 0.15),
+            0 0 40px rgba(37, 99, 235, 0.1);
+        }
+
+        .internships-section:hover .section-title {
+          color: var(--accent-color);
+          text-shadow: 
+            0 0 15px var(--accent-color),
+            0 0 30px var(--accent-color),
+            0 0 60px rgba(37, 99, 235, 0.6);
+          transform: translateY(-5px) scale(1.02);
         }
 
         .section-subtitle {
-           transition: all 0.3s ease;
-           color: var(--text-secondary);
-        }
-
-        /* Activates glow for both when the section is hovered */
-        .internships-section:hover .section-title {
-          text-shadow: 0 0 15px var(--accent-color);
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          margin-top: 15px;
+          transition: all 0.5s ease;
+          opacity: 0.8;
+          filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.1));
         }
 
         .internships-section:hover .section-subtitle {
           color: var(--text-primary);
-          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+          opacity: 1;
+          filter: drop-shadow(0 0 12px var(--accent-color));
         }
 
+        /* --- PRESERVED CARD LOGIC --- */
         .experience-list {
           display: flex;
           flex-direction: column;
           gap: 25px;
           margin-top: 40px;
-          max-height: 600px;
+          max-height: 800px;
           overflow-y: auto;
           padding: 20px;
           scrollbar-width: none;
@@ -74,7 +96,6 @@ const Internships = () => {
         
         .experience-list::-webkit-scrollbar { display: none; }
 
-        /* Card Glow */
         .internship-card {
           background: var(--bg-card);
           backdrop-filter: blur(12px);
@@ -95,7 +116,6 @@ const Internships = () => {
           box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
         }
 
-        /* Title Glow inside Card */
         .intern-title {
           font-size: 1.4rem; 
           color: var(--text-primary); 
@@ -106,7 +126,6 @@ const Internships = () => {
           text-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
         }
 
-        /* Icon Box Hover & Glow */
         .icon-box {
           transition: all 0.3s ease;
           display: flex;
@@ -122,7 +141,6 @@ const Internships = () => {
           box-shadow: 0 0 20px var(--accent-color);
         }
 
-        /* Skill Tags Hover & Glow */
         .service-tag {
           transition: all 0.3s ease;
           cursor: pointer;
@@ -136,7 +154,6 @@ const Internships = () => {
           box-shadow: 0 0 12px var(--accent-color);
         }
 
-        /* Verify Button Glow */
         .social-btn {
           display: inline-flex;
           align-items: center;
@@ -158,7 +175,6 @@ const Internships = () => {
           box-shadow: 0 0 15px var(--accent-color);
         }
 
-        /* Certificate Preview Glow */
         .cert-preview-container {
           position: relative;
           width: 220px;
@@ -214,11 +230,12 @@ const Internships = () => {
             margin-left: 0;
             margin-top: 20px;
           }
+          .section-title { font-size: 2.2rem; }
         }
       `}</style>
 
       <div className="container">
-        <div className="section-header text-center">
+        <div className="section-header">
           <h2 className="section-title">Professional Experience</h2>
           <p className="section-subtitle">Real-world applications and industry training programs.</p>
         </div>
@@ -233,7 +250,8 @@ const Internships = () => {
                   height: '60px', 
                   background: 'var(--bg-secondary)',
                   borderRadius: '15px',
-                  color: 'var(--accent-color)'
+                  color: 'var(--accent-color)',
+                  marginBottom: '15px'
                 }}>
                   {item.icon}
                 </div>
