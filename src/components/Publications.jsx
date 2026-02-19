@@ -24,14 +24,12 @@ const Publications = () => {
       link: "/Mits_article.pdf",
       ISBN: "Pending" 
     }
-    // Add more papers here to see the carousel in action
   ];
 
-  // --- CAROUSEL SCROLL LOGIC ---
   const scroll = (direction) => {
     const { current } = scrollRef;
     if (current) {
-      const scrollAmount = current.clientWidth / 2 + 17; // Half container + half gap
+      const scrollAmount = current.clientWidth / 2 + 17; 
       current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -39,7 +37,6 @@ const Publications = () => {
     }
   };
 
-  // --- HELPER: SMOOTH SWEETALERT POPUP ---
   const showSuccessPopup = (message) => {
     Swal.fire({
       title: 'Copied!',
@@ -123,7 +120,6 @@ const Publications = () => {
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* --- CAROUSEL WRAPPER --- */
         .pub-carousel-container {
           position: relative;
           max-width: 1200px;
@@ -137,16 +133,16 @@ const Publications = () => {
           gap: 35px;
           padding: 20px 5px;
           scroll-behavior: smooth;
-          scrollbar-width: none; /* Firefox */
-          -ms-overflow-style: none; /* IE */
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
 
         .pub-grid::-webkit-scrollbar {
-          display: none; /* Chrome/Safari */
+          display: none;
         }
 
         .pub-card {
-          min-width: calc(50% - 17.5px); /* Displays exactly 2 cards */
+          min-width: calc(50% - 17.5px);
           background: var(--bg-card);
           border: 1px solid var(--border-color);
           border-radius: 24px;
@@ -165,7 +161,6 @@ const Publications = () => {
           box-shadow: 0 20px 40px var(--shadow-color), 0 0 25px rgba(37, 99, 235, 0.2);
         }
 
-        /* --- NAVIGATION BUTTONS --- */
         .nav-btn {
           position: absolute;
           top: 50%;
@@ -283,6 +278,8 @@ const Publications = () => {
           .nav-btn { display: none; }
           .section-title { font-size: 2.2rem; }
           .pub-header-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+          /* Logic to hide description on mobile */
+          .pub-desc { display: none; }
         }
       `}</style>
 

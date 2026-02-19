@@ -167,6 +167,20 @@ const About = () => {
           gap: 20px;
         }
 
+        /* --- NEW EDUCATION HEADER GLOW --- */
+        .education-header-text {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .about-section:hover .education-header-text {
+          color: var(--accent-color);
+          text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+        }
+
         .about-card {
           display: flex;
           align-items: center;
@@ -244,6 +258,9 @@ const About = () => {
             text-align: center;
             padding: 30px;
           }
+          .education-header-text {
+            text-align: center;
+          }
         }
       `}</style>
 
@@ -255,6 +272,7 @@ const About = () => {
           </div>
           
           <div className="about-content">
+            {/* LEFT SIDE: PERSONAL BIO */}
             <div className="about-text">
               <h3 className="about-heading">
                 Developing with <span className="highlight">Purpose</span> & <span className="highlight">Passion</span>.
@@ -278,7 +296,11 @@ const About = () => {
               </div>
             </div>
 
+            {/* RIGHT SIDE: EDUCATIONAL HIGHLIGHTS */}
             <div className="about-grid">
+              {/* Added Educational Details Heading */}
+              <h3 className="education-header-text">Educational Details</h3>
+              
               {education.map((item, index) => (
                 <div className="about-card" key={index}>
                   <div className="card-icon-wrapper">

@@ -371,7 +371,7 @@ const Hero = () => {
       <style>{`
         .hero {
           position: relative;
-          min-height: 100vh;
+          min-height: 88vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -383,7 +383,7 @@ const Hero = () => {
 
         /* --- SECTION HEADING & SUBHEADING GLOW --- */
         .hero h1 {
-          font-size: 3.2rem;
+          font-size: 3.0rem;
           font-weight: 800;
           color: var(--text-primary);
           line-height: 1.1;

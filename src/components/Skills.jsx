@@ -41,6 +41,7 @@ const Skills = () => {
           position: relative;
           width: 100%;
           overflow: hidden;
+        
         }
 
         .skills-container {

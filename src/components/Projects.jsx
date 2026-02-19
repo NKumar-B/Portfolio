@@ -10,7 +10,7 @@ const Projects = () => {
       desc: "A specialized React-based portal for faculty to manage student internal marks via Excel uploads and perform automated semester result analysis with dynamic data visualization.",
       tags: ["React.js", "Vite","Tailwind CSS","Lucide-React","Recharts","SweetAlert2","React Router DOM","MongoDB","Expreess.js","Node.js"],
       links: { demo: "#", code: "https://github.com/NKumar-B/Mtieat.Web" },
-      image: "/Mtieat.png" 
+      image: "\mtieat_web.png" 
     },
     {
       title: "AtherLens-FaceMesh",
