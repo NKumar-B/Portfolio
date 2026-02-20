@@ -3,35 +3,46 @@ import { FaLaptopCode, FaBrain, FaExternalLinkAlt, FaCheckCircle, FaUniversity }
 const Internships = () => {
   const internshipData = [
     {
-      title: "GOOGLE AI-ML VIRTUAL INTERNSHIP",
+      title: "AWS GEN-AI VIRTUAL INTERNSHIP (Remote)",
+      issuer: "AICTE-EduSkills",
+      date: "24 Dec 2025",
+      skills: ["AI", "ML","NLP","Generative AI","AWS Cloud","Prompt Engineering"], 
+      pdfLink: "/NITHIN KUMAR BADDULURI 748893.pdf", 
+      verifyLink: "https://aictecert.eduskillsfoundation.org/pages/home/verify.php?cert=cda149d64d108cda5b1504f6f1715825",
+      icon: <FaUniversity />,
+      certImage: "/aws_genai_cert.png" 
+    },
+    {
+      title: "GOOGLE AI-ML VIRTUAL INTERNSHIP (Remote)",
       issuer: "AICTE-EduSkills",
       date: "Sep 2025",
-      skills: ["TensorFlow", "Deep Learning", "Computer Vision", "NLP"],
+      skills: ["AI","ML","TensorFlow", "Deep Learning", "Computer Vision", "NLP"],
       pdfLink: "/NITHIN KUMAR BADDULURI 91680.pdf", 
       verifyLink: "https://aictecert.eduskillsfoundation.org/pages/home/verify.php?cert=143884f9cf0c4b79050170589bb82273",
       icon: <FaBrain />,
       certImage: "/google_ai_cert.png" 
     },
     {
-      title: "WEB FULL STACK DEVELOPER VIRTUAL INTERNSHIP",
+      title: "FULL STACK WEB DEVELOPMENT (Remote)",
+      issuer: "GenProces",
+      date: "Jul 2025",
+      skills: ["HTML5","CSS","React.js", "Node.js", "MongoDB"],
+      pdfLink: "\genprocess_internship.PDF", 
+      verifyLink: "\genprocess_internship.PDF",
+      icon: <FaUniversity />,
+      certImage: "/genprocess_internship.png" 
+    },
+    {
+      title: "WEB FULL STACK DEVELOPER VIRTUAL INTERNSHIP (Remote)",
       issuer: "AICTE-EduSkills",
       date: "Jun 2025",
-      skills: ["React.js", "Node.js", "MongoDB", "Full Stack"],
+      skills: ["React.js", "Node.js", "MongoDB"],
       pdfLink: "/NITHIN KUMAR BADDULURI 642893.pdf", 
       verifyLink: "https://aictecert.eduskillsfoundation.org/pages/home/verify.php?cert=a67e5a989eb97513e016594b169fc478",
       icon: <FaLaptopCode />,
       certImage: "/web_fullstack_cert.png" 
     },
-    {
-      title: "AWS GEN-AI VIRTUAL INTERNSHIP",
-      issuer: "AICTE-EduSkills",
-      date: "24 Dec 2025",
-      skills: ["Raspberry Pi", "MQTT"], 
-      pdfLink: "/NITHIN KUMAR BADDULURI 748893.pdf", 
-      verifyLink: "https://aictecert.eduskillsfoundation.org/pages/home/verify.php?cert=cda149d64d108cda5b1504f6f1715825",
-      icon: <FaUniversity />,
-      certImage: "/aws_genai_cert.png" 
-    },
+    
   ];
 
   return (

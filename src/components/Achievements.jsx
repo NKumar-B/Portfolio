@@ -17,22 +17,40 @@ const Achievements = () => {
   };
 
   const certifications = [
+     {
+      title: "My Bharat Budget Quest 2026",
+      issuer: "Ministry of Youth Affairs and Sports",
+      date: "17 Feb 2026",
+      credentialId: "Participation Certificate",
+      link: "\ MyBharat_2026.jpeg",
+      skills: ["Financial Analysis","Budget Management"],
+      icon: <FaUniversity />
+    },
     {
       title: "AWS Academy Graduate-ML for NLP",
       issuer: "AWS (Credly)",
       date: "21 Dec 2025",
-      credentialId: "#",
+      credentialId: "Credly Badge",
       link: "https://www.credly.com/go/pp97B3gX",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["ML", "NLP","AWS Cloud"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "AWS Academy Graduate- ML Foundations",
+      issuer: "AWS (Credly)",
+      date: "21 Dec 2025",
+      credentialId: "Credly Badge",
+      link: "https://www.credly.com/badges/e8f02a38-f4b5-4e9d-b865-cbf214133ebd",
+      skills: ["AI", "ML","NLP"],
       icon: <FaUniversity />
     },
     {
       title: "AWS Academy Graduate- GEN AI Foundations",
       issuer: "AWS (Credly)",
       date: "19 Dec 2025",
-      credentialId: "#",
+      credentialId: "Credly Badge",
       link: "https://www.credly.com/badges/2f3e0642-af57-4c9a-b020-9a3f46651eec",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["AI", "ML","NLP"],
       icon: <FaUniversity />
     },
     {
@@ -41,7 +59,52 @@ const Achievements = () => {
       date: "Nov 2025",
       credentialId: "NPTEL25CS146S962100519",
       link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs146/Course/NPTEL25CS146S96210051910690182.pdf",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["IoT", "MicroControllers","Communication Protocols","UAV's"],
+      icon: <FaUniversity />
+    },
+     {
+      title: "Paper Presentation(PEN TO PODIUM)",
+      issuer: "Madanapalle Institute of Technology & Science",
+      date: "12 Sep 2025",
+      credentialId: "Participation Certificate",
+      link: "/Mits_paper_presentation.PDF",
+      skills: ["Presentation Skills","Documentation Work","Problem Solving"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Innovation Ambassador(IA)",
+      issuer: "AICTE (IIC, Ministry of Education)",
+      date: "9 Sep 2025",
+      credentialId: "IA/Foundation/1072967",
+      link: "\Innovation_Ambassador_IA_merged.pdf",
+      skills: ["Entrepreneurship Development","Pre-Incubation & Incubation Management","Intellectual Property Rights (IPR) & Technology Transfer"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Paper Presentation(AITHERONML 2K25)",
+      issuer: "Kuppam Engineering College",
+      date: "22 Aug 2025",
+      credentialId: "Participation Certificate",
+      link: "\KUPPAM_3RD_WINNER.pdf",
+      skills: ["Presentation Skills","Documentation Work","Problem Solving"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Machine Learning With Python",
+      issuer: "IBM (Cognitive Class )",
+      date: "28 June 2025",
+      credentialId: "14903313e0cb47aca637406e23dbd3b5",
+      link: "https://courses.cognitiveclass.ai/certificates/14903313e0cb47aca637406e23dbd3b5",
+      skills: ["Python","Types of ML","Classification","Clustering","Regression","Recommender Systems"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Machine Learning With Python",
+      issuer: "IBM (Credly)",
+      date: "28 June 2025",
+      credentialId: "Credly Badge",
+      link: "https://www.credly.com/badges/72d1efa5-bc2d-467d-9210-4bbd821f782b",
+      skills: ["Python","Types of ML","Classification","Clustering","Regression","Recommender Systems"],
       icon: <FaUniversity />
     },
     {
@@ -50,7 +113,16 @@ const Achievements = () => {
       date: "30 May 2025",
       credentialId: "NPTEL25CS146S962100519",
       link: "https://coursera.org/share/120965a91f0ca294767613337752be15",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["HTML Crash Course"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Paper Presentation (CRATE-2025)",
+      issuer: "Vemu Institute of Technology",
+      date: "28 Feb 2025",
+      credentialId: "Participation Certificate",
+      link: " \ vemu_paper_presentation.pdf",
+      skills: ["Presentation Skills","Documentation Work","Problem Solving"],
       icon: <FaUniversity />
     },
     {
@@ -59,7 +131,7 @@ const Achievements = () => {
       date: "23 Dec 2024",
       credentialId: "6a43bf0d6fe342ef835fb69112162a98",
       link: "https://courses.cognitiveclass.ai/certificates/6a43bf0d6fe342ef835fb69112162a98",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["SQL", "Relational Databases (RDBMS)","Data Modeling","Schema Design","Joins", "CRUD Operations"],
       icon: <FaUniversity />
     },
     {
@@ -68,16 +140,34 @@ const Achievements = () => {
       date: "19 Dec 2024",
       credentialId: "9a77656c36df40a2bdea748f5ecb42c0",
       link: " https://courses.cognitiveclass.ai/certificates/9a77656c36df40a2bdea748f5ecb42c0",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["Python", "Data Analysis","Data Processing"],
       icon: <FaUniversity />
     },
     {
       title: "Python for Data Science",
       issuer: " IBM (Credly) ",
       date: "19 Dec 2024",
-      credentialId: "6a43bf0d6fe342ef835fb69112162a98",
+      credentialId: "Credly Badge",
       link: "https://www.credly.com/badges/82faf937-0bb8-4af6-8778-177b593bcf07/print",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills:["Python", "Data Analysis","Data Processing"],
+      icon: <FaUniversity />
+    },
+     {
+      title: "Webinar on Professional Career Counselling",
+      issuer: "Elewayte",
+      date: "28 Nov 2024",
+      credentialId: "35432",
+      link: "\Elewayate_participation.pdf",
+      skills: ["Career Counselling","Future Technologies"],
+      icon: <FaUniversity />
+    },
+     {
+      title: "Technology Job Simulation",
+      issuer: "Forage (Deloitte)",
+      date: "18 Jul 2024",
+      credentialId: "8c2DzMkg3g4Js5AWh",
+      link: " https://www.theforage.com/completion-certificates/Deloitte%20Australia/YPWCiGNTkr6QxcpEu_Deloitte%20Australia_8c2DzMkg3g4Js5AWh_1721269823303_completion_certificate.pdf",
+      skills: ["Data Analysis","Cyber Security","Forensic Technology"],
       icon: <FaUniversity />
     },
     {
@@ -86,7 +176,16 @@ const Achievements = () => {
       date: "15 Jul 2024",
       credentialId: "8c2DzMkg3g4Js5AWh",
       link: " https://www.theforage.com/completion-certificates/Accenture%20UK/3xnZEj9kfpoQKW885_Accenture%20UK_8c2DzMkg3g4Js5AWh_1721038394314_completion_certificate.pdf",
-      skills: ["Raspberry Pi", "MQTT"],
+      skills: ["SDLC", "STLC","Code Debugging","Software Development Methodologies"],
+      icon: <FaUniversity />
+    },
+    {
+      title: "Webinar about National Building Code",
+      issuer: "Construction Management Training Institute (CMTI)",
+      date: "8 Mar 2024",
+      credentialId: "Webinar Certificate",
+      link: "\civil_engg_training.pdf",
+      skills: ["Construction Technologies"],
       icon: <FaUniversity />
     },
   ];
