@@ -111,7 +111,7 @@ const Achievements = () => {
       title: "Introduction to HTML",
       issuer: "Coursera",
       date: "30 May 2025",
-      credentialId: "NPTEL25CS146S962100519",
+      credentialId: "WVQZ2QS8F9EO",
       link: "https://coursera.org/share/120965a91f0ca294767613337752be15",
       skills: ["HTML Crash Course"],
       icon: <FaUniversity />
@@ -127,7 +127,7 @@ const Achievements = () => {
     },
     {
       title: "SQL and Relational Databases 101",
-      issuer: "Cognitive Class (IBM Developer Skills Network)",
+      issuer: "IBM Developer Skills Network (Cognitive Class)",
       date: "23 Dec 2024",
       credentialId: "6a43bf0d6fe342ef835fb69112162a98",
       link: "https://courses.cognitiveclass.ai/certificates/6a43bf0d6fe342ef835fb69112162a98",
@@ -136,7 +136,7 @@ const Achievements = () => {
     },
     {
       title: "Python 101 for Data Science",
-      issuer: "Cognitive Class( IBM Developer Skills Network)",
+      issuer: "IBM Developer Skills Network (Cognitive Class)",
       date: "19 Dec 2024",
       credentialId: "9a77656c36df40a2bdea748f5ecb42c0",
       link: " https://courses.cognitiveclass.ai/certificates/9a77656c36df40a2bdea748f5ecb42c0",
@@ -163,7 +163,7 @@ const Achievements = () => {
     },
      {
       title: "Technology Job Simulation",
-      issuer: "Forage (Deloitte)",
+      issuer: "Deloitte (Forage)",
       date: "18 Jul 2024",
       credentialId: "8c2DzMkg3g4Js5AWh",
       link: " https://www.theforage.com/completion-certificates/Deloitte%20Australia/YPWCiGNTkr6QxcpEu_Deloitte%20Australia_8c2DzMkg3g4Js5AWh_1721269823303_completion_certificate.pdf",
@@ -172,7 +172,7 @@ const Achievements = () => {
     },
     {
       title: "Developer and Technology Job Simulation",
-      issuer: "Forage (Accenture)",
+      issuer: "Accenture (Forage)",
       date: "15 Jul 2024",
       credentialId: "8c2DzMkg3g4Js5AWh",
       link: " https://www.theforage.com/completion-certificates/Accenture%20UK/3xnZEj9kfpoQKW885_Accenture%20UK_8c2DzMkg3g4Js5AWh_1721038394314_completion_certificate.pdf",
