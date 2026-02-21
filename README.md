@@ -1,9 +1,14 @@
 # 🌟 Nithin Kumar | Professional Portfolio
 Welcome to my portfolio! This is a modern, high-performance web application built with React.js. It features a unique Aura Glow design system, interactive UI components, and integrated AI/IoT project showcases.
 
-🔗 **Live Demo:** 
+---
 
-https://github.com/user-attachments/assets/3f390fa9-3e4d-412a-82d5-3dd748e54db6
+## 📽️ Visual Showcase
+Experience the **Aura Glow** effect and smooth **Carousel** transitions in action:
+
+[![Portfolio Preview](https://img.shields.io/badge/▶_Watch_Preview-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/user-attachments/assets/3f390fa9-3e4d-412a-82d5-3dd748e54db6)
+
+*Click the badge above to view the screen recording of the interface.*
 
 ---
 
