@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@mlc-ai/web-llm": "^0.2.80",
     "lucide-react": "^0.564.0",
     "nodemailer": "^8.0.1",

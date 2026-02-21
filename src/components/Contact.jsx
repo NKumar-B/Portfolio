@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedinIn, FaGithub, FaTwitter, FaPaperPlane, FaUser, FaCheckCircle } from 'react-icons/fa';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedinIn, FaGithub, FaPaperPlane, FaUser, FaCheckCircle } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6"; 
+import emailjs from '@emailjs/browser'; // 1. Import EmailJS
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(''); 
 
-  // --- HELPER: EMAIL VALIDATION ---
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -14,7 +14,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // 1. Validate Email Format
     if (!isValidEmail(formData.email)) {
       setStatus('invalid_email');
       return;
@@ -22,29 +21,33 @@ const Contact = () => {
 
     setStatus('sending');
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    // 2. Map your form data to your EmailJS Template Variables
+    const templateParams = {
+      from_name: formData.name,   // Matches {{from_name}} in EmailJS
+      reply_to: formData.email,    // Matches {{reply_to}} in EmailJS
+      message: formData.message,   // Matches {{message}} in EmailJS
+    };
 
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        e.target.reset(); 
-        setTimeout(() => setStatus(''), 5000);
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
+    // 3. Replace IDs with your actual EmailJS credentials
+    emailjs.send(
+      'service_al3tqdx',      // Your Service ID
+      'template_gypnx1l',     // Your Template ID
+      templateParams,
+      'niwqNcjwgLygVv1LW'      // Your Public Key (found in Account settings)
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
       setStatus('error');
-      console.error("Fetch error:", err);
-    }
+      alert("Failed to send message. Please check your internet or try again later.");
+    });
   };
 
   const handleChange = (e) => {
-    // Clear error status when user starts typing again
     if (status === 'invalid_email' || status === 'error') setStatus('');
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -298,7 +301,6 @@ const Contact = () => {
         .form-input:hover:not(:disabled), .form-textarea:hover:not(:disabled) { background: var(--bg-card); border-color: var(--text-secondary); }
         .form-input:focus:not(:disabled), .form-textarea:focus:not(:disabled) { background: var(--bg-card); border-color: var(--accent-color); box-shadow: 0 0 20px rgba(37, 99, 235, 0.25); }
         
-        /* ERROR BORDER IF INVALID EMAIL */
         .form-input.invalid { border-color: #ef4444; }
 
         .input-wrapper { position: relative; width: 100%; }
