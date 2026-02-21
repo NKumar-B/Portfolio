@@ -1,3 +1,4 @@
+//contact.jsx updated with EmailJS
 import { useState } from 'react';
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedinIn, FaGithub, FaPaperPlane, FaUser, FaCheckCircle } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6"; 
