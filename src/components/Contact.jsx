@@ -31,11 +31,11 @@ const Contact = () => {
 
     // 3. Replace IDs with your actual EmailJS credentials
     emailjs.send(
-      'service_al3tqdx',      // Your Service ID
-      'template_gypnx1l',     // Your Template ID
-      templateParams,
-      'niwqNcjwgLygVv1LW'      // Your Public Key (found in Account settings)
-    )
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  templateParams,
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+)
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
       setStatus('success');
