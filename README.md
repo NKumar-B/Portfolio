@@ -3,7 +3,7 @@ Welcome to my portfolio! This is a modern, high-performance web application buil
 
 ---
 
-## 📽️ Visual Showcase
+## Visual Showcase
 Experience the **Aura Glow** effect and smooth **Carousel** transitions in action:
 
 [![Portfolio Preview](https://img.shields.io/badge/▶_Watch_Preview-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/user-attachments/assets/3f390fa9-3e4d-412a-82d5-3dd748e54db6)
@@ -14,7 +14,7 @@ Experience the **Aura Glow** effect and smooth **Carousel** transitions in actio
 
 ##  Innovative Features
 
-### 🌌 The "Aura Glow" UI
+### The "Aura Glow" UI
 
 Unlike standard portfolios, this site uses a custom-engineered **Aura Glow** effect.
 
@@ -22,7 +22,7 @@ Unlike standard portfolios, this site uses a custom-engineered **Aura Glow** eff
 * **Cohesive Design:** A unified visual language across About, Skills, Projects, and Publications.
 * **Theme Intelligence:** Context-aware variables that adapt glow intensity based on Light or Dark mode.
 
-### 📚 Smart Publications Carousel
+### Smart Publications Carousel
 
 A dedicated research showcase with advanced logic:
 
@@ -30,14 +30,14 @@ A dedicated research showcase with advanced logic:
 * **Adaptive Visibility:** Long descriptions are automatically hidden on mobile to maintain a sleek, scroll-friendly interface.
 * **Interactive Metadata:** Clickable **ISBN** badges and **Citation** buttons with integrated clipboard logic.
 
-### 🎓 Educational & Professional Timeline
+### Educational & Professional Timeline
 
 * **Verified Credentials:** Integrated **SweetAlert2** popups for a smooth, high-end user experience when interacting with certificates.
 * **Orbiting Visuals:** A creative "Gravity" component in the Resume section where core tech icons orbit your central profile.
 
 ---
 
-## 🛠️ Technical Excellence
+## Technical Excellence
 
 | Category | Technologies |
 | --- | --- |
@@ -48,7 +48,7 @@ A dedicated research showcase with advanced logic:
 | **Performance** | Optimized asset loading & `cubic-bezier` animations |
 ---
 
-## 📂 Project Architecture
+## Project Architecture
 
 ```bash
 PORTFOLIO_WEBSITE/
@@ -70,7 +70,7 @@ PORTFOLIO_WEBSITE/
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 1. **Clone the repository**
 ```bash
