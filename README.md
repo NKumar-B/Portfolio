@@ -14,7 +14,7 @@ Experience the **Aura Glow** effect and smooth **Carousel** transitions in actio
 
 ##  Innovative Features
 
-### The "Aura Glow" UI
+###  The "Aura Glow" UI
 
 Unlike standard portfolios, this site uses a custom-engineered **Aura Glow** effect.
 
