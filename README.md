@@ -1,4 +1,4 @@
-# 🌟 Nithin Kumar | Professional Portfolio
+# Nithin Kumar | Professional Portfolio
 Welcome to my portfolio! This is a modern, high-performance web application built with React.js. It features a unique Aura Glow design system, interactive UI components, and integrated AI/IoT project showcases.
 
 ---
@@ -128,7 +128,3 @@ The portfolio is meticulously optimized for all screen sizes:
 * **Email:** [nithinkumarbadduluri@gmail.com](mailto:nithinkumarbadduluri@gmail.com)
 * **LinkedIn:** [@Nithin Kumar Badduluri]([www.linkedin.com/in/nithin-kumar-badduluri-3942512a6](https://www.linkedin.com/in/nithin-kumar-badduluri-3942512a6))
 * **GitHub:** [@NKumar-B](https://github.com/NKumar-B)
-
----
-
-Built with ❤️ by Badduluri Nithin Kumar.
