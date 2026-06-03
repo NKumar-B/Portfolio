@@ -1,6 +1,6 @@
 # Nithin Kumar | Professional Portfolio
 Welcome to my portfolio! This is a modern, high-performance web application built with React.js. It features a unique Aura Glow design system, interactive UI components, and integrated AI/IoT project showcases.
-
+ 
 ---
 
 ## Visual Showcase
